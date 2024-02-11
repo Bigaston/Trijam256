@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://y3cg8ronj6ho"]
+
+[ext_resource type="Texture2D" uid="uid://db15g6tyqmn6f" path="res://resources/sprites/bloc-minus1.png" id="1_oknpi"]
+[ext_resource type="Script" path="res://objects/blocs/minus_one.gd" id="2_xxgdh"]
+
+[node name="MinusOne" type="Sprite2D"]
+texture = ExtResource("1_oknpi")
+centered = false
+script = ExtResource("2_xxgdh")

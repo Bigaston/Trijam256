@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtlb7cxqqq3ik"]
+
+[ext_resource type="Texture2D" uid="uid://d4f4adgg1gj65" path="res://resources/sprites/bloc-rotate-left.png" id="1_fbmww"]
+[ext_resource type="Script" path="res://objects/blocs/rotate_left.gd" id="2_rbst8"]
+
+[node name="RotateLeft" type="Sprite2D"]
+texture = ExtResource("1_fbmww")
+centered = false
+script = ExtResource("2_rbst8")

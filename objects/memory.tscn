@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://6slf31ml2vhn"]
+
+[ext_resource type="Texture2D" uid="uid://dexd2le4ihpfq" path="res://resources/sprites/9-slice.png" id="1_iwt7g"]
+[ext_resource type="Script" path="res://objects/memory.gd" id="1_si2d7"]
+[ext_resource type="Texture2D" uid="uid://biih2ivjji8sh" path="res://resources/sprites/light-false.png" id="2_y1647"]
+[ext_resource type="Texture2D" uid="uid://bv4w2myapsd0h" path="res://resources/sprites/light-true.png" id="3_totby"]
+
+[node name="Memory" type="Node2D"]
+script = ExtResource("1_si2d7")
+false_sprite = ExtResource("2_y1647")
+true_sprite = ExtResource("3_totby")
+
+[node name="BottomPatch" type="NinePatchRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 60.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_iwt7g")
+region_rect = Rect2(0, 0, 15, 15)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Bit3" type="Sprite2D" parent="."]
+position = Vector2(12, 12)
+texture = ExtResource("2_y1647")
+
+[node name="Bit2" type="Sprite2D" parent="."]
+position = Vector2(30, 12)
+texture = ExtResource("2_y1647")
+
+[node name="Bit1" type="Sprite2D" parent="."]
+position = Vector2(48, 12)
+texture = ExtResource("2_y1647")

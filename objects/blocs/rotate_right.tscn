@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmrvujb0sgwb"]
+
+[ext_resource type="Texture2D" uid="uid://cmjqnbexbkt53" path="res://resources/sprites/bloc-rotate-right.png" id="1_v1ohv"]
+[ext_resource type="Script" path="res://objects/blocs/rotate_right.gd" id="2_slcb7"]
+
+[node name="RotateRight" type="Sprite2D"]
+texture = ExtResource("1_v1ohv")
+centered = false
+script = ExtResource("2_slcb7")

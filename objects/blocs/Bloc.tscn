@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cts2xrktym3yl"]
+
+[ext_resource type="Script" path="res://objects/blocs/Bloc.gd" id="1_rtr71"]
+
+[node name="Bloc" type="Sprite2D"]
+script = ExtResource("1_rtr71")
