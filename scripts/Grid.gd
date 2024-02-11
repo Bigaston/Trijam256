@@ -7,6 +7,8 @@ extends Node2D
 @export var spr_grid: Texture2D
 @export var spr_grid_selected: Texture2D
 
+signal toggle_add()
+
 var grid: Array[Sprite2D] = []
 
 var is_selected = true
@@ -30,12 +32,38 @@ func _ready() -> void:
 	update_selected_sprite(true)
 	
 func update_selected_sprite(is_selected: bool) -> void:
-	if is_selected:
-		grid[select_position_x + select_position_y * grid_width].texture = spr_grid_selected
-	else:
-		grid[select_position_x + select_position_y * grid_width].texture = spr_grid		
+	$GridSelector.position.x = 7 + select_position_x * 18
+	$GridSelector.position.y = 30 + select_position_y * 18
+	
+	#if is_selected:
+		#grid[select_position_x + select_position_y * grid_width].texture = spr_grid_selected
+	#else:
+		#grid[select_position_x + select_position_y * grid_width].texture = spr_grid		
+	pass
+		
+func set_bloc(bloc: PackedScene):
+	grid[select_position_x + select_position_y * grid_width].queue_free()
+	
+	var new_bloc = bloc.instantiate()
+	
+	grid[select_position_x + select_position_y * grid_width] = new_bloc
+	
+	new_bloc.position.x = 7 + select_position_x * 18
+	new_bloc.position.y = 30 + select_position_y * 18
+	
+	add_child(new_bloc)
+	
+	is_selected = true
 	
 func _process(delta: float) -> void:
+	if !is_selected:
+		return
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		is_selected = false
+		update_selected_sprite(false)
+		toggle_add.emit()
+	
 	if Input.is_action_just_pressed("ui_left"):
 		update_selected_sprite(false)
 		select_position_x -= 1

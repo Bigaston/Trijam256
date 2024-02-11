@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhoqsujq0xrwk"]
+
+[ext_resource type="Texture2D" uid="uid://8t5u6qfjirq0" path="res://resources/sprites/bloc-output.png" id="1_agkwb"]
+[ext_resource type="Script" path="res://objects/blocs/output.gd" id="1_qx77k"]
+
+[node name="Output" type="Sprite2D"]
+texture = ExtResource("1_agkwb")
+centered = false
+script = ExtResource("1_qx77k")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtb6xpa1wondv"]
+[gd_scene load_steps=7 format=3 uid="uid://dtb6xpa1wondv"]
 
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_qcil3"]
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="2_jyhur"]
 [ext_resource type="PackedScene" uid="uid://6slf31ml2vhn" path="res://objects/memory.tscn" id="2_sfhiy"]
-[ext_resource type="Texture2D" uid="uid://dexd2le4ihpfq" path="res://resources/sprites/9-slice.png" id="2_yivs8"]
 [ext_resource type="Texture2D" uid="uid://1078xub61lkv" path="res://resources/sprites/grid.png" id="3_sqtsq"]
 [ext_resource type="Texture2D" uid="uid://cng1irifduy07" path="res://resources/sprites/grid-selected.png" id="4_rf2cm"]
+[ext_resource type="PackedScene" uid="uid://d3nw2nllui7gb" path="res://objects/bottom.tscn" id="5_61t18"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_qcil3")
 
 [node name="Memory" parent="." instance=ExtResource("2_sfhiy")]
 position = Vector2(120, 0)
@@ -16,22 +18,13 @@ script = ExtResource("2_jyhur")
 spr_grid = ExtResource("3_sqtsq")
 spr_grid_selected = ExtResource("4_rf2cm")
 
-[node name="BottomPatch" type="NinePatchRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = 160.0
-offset_right = 300.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("2_yivs8")
-region_rect = Rect2(0, 0, 15, 15)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+[node name="GridSelector" type="Sprite2D" parent="Grid"]
+top_level = true
+texture = ExtResource("4_rf2cm")
+centered = false
+
+[node name="BottomPatch" parent="." instance=ExtResource("5_61t18")]
+position = Vector2(0, 160)
+
+[connection signal="toggle_add" from="Grid" to="." method="_on_grid_toggle_add"]
+[connection signal="set_bloc" from="BottomPatch" to="." method="_on_bottom_patch_set_bloc"]

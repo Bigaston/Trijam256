@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3nw2nllui7gb"]
+
+[ext_resource type="Script" path="res://objects/bottom.gd" id="1_mv6a1"]
+[ext_resource type="Texture2D" uid="uid://dexd2le4ihpfq" path="res://resources/sprites/9-slice.png" id="1_vofim"]
+[ext_resource type="Texture2D" uid="uid://cfqv7s2xrfwdu" path="res://resources/sprites/bloc-plus1.png" id="3_ueprs"]
+[ext_resource type="Texture2D" uid="uid://db15g6tyqmn6f" path="res://resources/sprites/bloc-minus1.png" id="4_x0f82"]
+[ext_resource type="Texture2D" uid="uid://d4f4adgg1gj65" path="res://resources/sprites/bloc-rotate-left.png" id="5_iirya"]
+[ext_resource type="Texture2D" uid="uid://cmjqnbexbkt53" path="res://resources/sprites/bloc-rotate-right.png" id="6_n3uum"]
+[ext_resource type="Texture2D" uid="uid://8t5u6qfjirq0" path="res://resources/sprites/bloc-output.png" id="7_amq0p"]
+[ext_resource type="Texture2D" uid="uid://cng1irifduy07" path="res://resources/sprites/grid-selected.png" id="8_1inkm"]
+
+[node name="Bottom" type="Node2D"]
+script = ExtResource("1_mv6a1")
+
+[node name="BottomPatch" type="NinePatchRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 300.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_vofim")
+region_rect = Rect2(0, 0, 15, 15)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="AddMode" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="BlocPlus1" type="Sprite2D" parent="AddMode"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ueprs")
+
+[node name="BlocMinus1" type="Sprite2D" parent="AddMode"]
+position = Vector2(54, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("4_x0f82")
+
+[node name="BlocRotateLeft" type="Sprite2D" parent="AddMode"]
+position = Vector2(88, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("5_iirya")
+
+[node name="BlocRotateRight" type="Sprite2D" parent="AddMode"]
+position = Vector2(122, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("6_n3uum")
+
+[node name="BlocOutput" type="Sprite2D" parent="AddMode"]
+position = Vector2(156, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("7_amq0p")
+
+[node name="BlocSelector" type="Sprite2D" parent="AddMode"]
+position = Vector2(4, 4)
+scale = Vector2(2, 2)
+texture = ExtResource("8_1inkm")
+centered = false
