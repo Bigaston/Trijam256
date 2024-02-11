@@ -1,4 +1,5 @@
 extends Bloc
+class_name Output
 
-func action():
-	pass
+func action() -> int:
+	return Memory.get_int()

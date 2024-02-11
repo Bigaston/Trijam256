@@ -7,6 +7,9 @@ func set_memory(new_memory: Array[bool]) -> void:
 	memory = new_memory
 	
 	memory_change.emit()
+	
+func reset():
+	set_memory([false, false, false])
 
 func get_int() -> int:
 	var total = 0
@@ -27,13 +30,13 @@ func set_int(val: int) -> void:
 		memory[2] = true
 		val -= 4
 	else:
-		memory[0] = false
+		memory[2] = false
 	
 	if val >= 2:
 		memory[1] = true
-		val -= 1	
+		val -= 2	
 	else:
-		memory[0] = false	
+		memory[1] = false	
 	
 	if val == 1:
 		memory[0] = true

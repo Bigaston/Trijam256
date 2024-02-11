@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm5lrbg56dvi7"]
+
+[ext_resource type="Texture2D" uid="uid://dexd2le4ihpfq" path="res://resources/sprites/9-slice.png" id="1_tx74k"]
+[ext_resource type="Texture2D" uid="uid://cpkaano0arqrf" path="res://resources/sprites/btn-step.png" id="2_3s5xd"]
+[ext_resource type="Texture2D" uid="uid://c80jlsp7hi6qg" path="res://resources/sprites/btn-play.png" id="3_15iyq"]
+[ext_resource type="Texture2D" uid="uid://ceg5s4ob7ib2i" path="res://resources/sprites/btn-stop.png" id="4_7ssea"]
+[ext_resource type="Texture2D" uid="uid://bpsh0bgm6cv74" path="res://resources/sprites/btn-selector.png" id="5_nr41p"]
+
+[node name="Buttons" type="Node2D"]
+
+[node name="BottomPatch" type="NinePatchRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 48.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_tx74k")
+region_rect = Rect2(0, 0, 15, 15)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ButtonStep" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("2_3s5xd")
+centered = false
+
+[node name="ButtonStop" type="Sprite2D" parent="."]
+position = Vector2(18, 4)
+texture = ExtResource("4_7ssea")
+centered = false
+
+[node name="ButtonPlay" type="Sprite2D" parent="."]
+position = Vector2(32, 4)
+texture = ExtResource("3_15iyq")
+centered = false
+
+[node name="ButtonSelector" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("5_nr41p")
+centered = false

@@ -8,12 +8,23 @@ extends Node2D
 @export var spr_grid_selected: Texture2D
 
 signal toggle_add()
+signal go_to_button()
 
 var grid: Array[Sprite2D] = []
 
 var is_selected = true
 var select_position_x = 0
 var select_position_y = 0
+
+func select(direction: int):
+	is_selected = true
+	
+	if direction == -1:
+		select_position_y = grid_height - 1
+	else:
+		select_position_y = 0
+		
+	update_selected_sprite(true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +43,8 @@ func _ready() -> void:
 	update_selected_sprite(true)
 	
 func update_selected_sprite(is_selected: bool) -> void:
+	$GridSelector.visible = is_selected
+	
 	$GridSelector.position.x = 7 + select_position_x * 18
 	$GridSelector.position.y = 30 + select_position_y * 18
 	
@@ -88,9 +101,13 @@ func _process(delta: float) -> void:
 		select_position_y -= 1
 		
 		if select_position_y < 0:
-			select_position_y = grid_height - 1
-		
-		update_selected_sprite(true)
+			go_to_button.emit()
+			is_selected = false
+			
+			
+			#select_position_y = grid_height - 1
+		else:
+			update_selected_sprite(true)
 
 	if Input.is_action_just_pressed("ui_down"):
 		update_selected_sprite(false)
@@ -98,6 +115,9 @@ func _process(delta: float) -> void:
 		select_position_y += 1
 		
 		if select_position_y >= grid_height:
-			select_position_y = 0
+			#select_position_y = 0
+			is_selected = false
 			
-		update_selected_sprite(true)
+			go_to_button.emit()
+		else:
+			update_selected_sprite(true)
