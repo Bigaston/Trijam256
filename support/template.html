@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <title>$GODOT_PROJECT_NAME</title>
     <style>
       * {
-        --background-color: #d8f2fd;
-        --progress-bar-background: #faf6fd;
-        --progress-bar-border: #e6d3f5;
-        --progress-line-background: #cb97ec;
+        --background-color: #634b7d;
+        --progress-bar-background: #2ba9b4;
+        --progress-bar-border: #6461c2;
+        --progress-line-background: #93d4b5;
       }
 
       body {
@@ -134,7 +134,7 @@
   </head>
   <body>
     <canvas id="canvas">
-      HTML5 canvas appears to be unsupported in the current browser.<br />
+      HTML5 canvas appears to be unsupported in the current browser.<br/>
       Please try updating or use a different browser.
     </canvas>
     <div id="status">
@@ -170,12 +170,8 @@
       (function () {
         const INDETERMINATE_STATUS_STEP_MS = 100;
         const statusProgress = document.getElementById("status-progress");
-        const statusProgressInner = document.getElementById(
-          "status-progress-inner"
-        );
-        const statusIndeterminate = document.getElementById(
-          "status-indeterminate"
-        );
+        const statusProgressInner = document.getElementById("status-progress-inner");
+        const statusIndeterminate = document.getElementById("status-indeterminate");
         const statusNotice = document.getElementById("status-notice");
 
         let initializing = true;
@@ -191,24 +187,26 @@
         function animateStatusIndeterminate(ms) {
           const i = Math.floor((ms / INDETERMINATE_STATUS_STEP_MS) % 8);
           if (statusIndeterminate.children[i].style.borderTopColor === "") {
-            Array.prototype.slice
+            Array
+              .prototype
+              .slice
               .call(statusIndeterminate.children)
               .forEach((child) => {
                 child.style.borderTopColor = "";
               });
-            statusIndeterminate.children[i].style.borderTopColor = "#dfdfdf";
+            statusIndeterminate
+              .children[i]
+              .style
+              .borderTopColor = "#dfdfdf";
           }
         }
 
         function setStatusMode(mode) {
           if (statusMode === mode || !initializing) {
             return;
-          }
-          [statusProgress, statusIndeterminate, statusNotice].forEach(
-            (elem) => {
-              elem.style.display = "none";
-            }
-          );
+          }[statusProgress, statusIndeterminate, statusNotice].forEach((elem) => {
+            elem.style.display = "none";
+          });
           animationCallbacks = animationCallbacks.filter(function (value) {
             return value !== animateStatusIndeterminate;
           });
@@ -252,8 +250,7 @@
 
         const missing = Engine.getMissingFeatures();
         if (missing.length !== 0) {
-          const missingMsg =
-            "Error\nThe following features required to run Godot projects on the Web are missing:\n";
+          const missingMsg = "Error\nThe following features required to run Godot projects on the Web are missing:\n";
           displayFailureNotice(missingMsg + missing.join("\n"));
         } else {
           setStatusMode("indeterminate");
@@ -261,9 +258,7 @@
             .startGame({
               onProgress: function (current, total) {
                 if (total > 0) {
-                  statusProgressInner.style.width = `${
-                    (current / total) * 100
-                  }%`;
+                  statusProgressInner.style.width = `${ (current / total) * 100}%`;
                   setStatusMode("progress");
                   if (current === total) {
                     // wait for progress bar animation
@@ -274,7 +269,7 @@
                 } else {
                   setStatusMode("indeterminate");
                 }
-              },
+              }
             })
             .then(() => {
               setStatusMode("hidden");
